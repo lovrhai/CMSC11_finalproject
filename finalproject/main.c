@@ -8,12 +8,7 @@
 
 #define FILE_NAME "leaderboard.txt"
 
-
 void center_text(const char*, int, int, Color);
-
-float max_scores = INFINITY;
-const char *top_tiles [BOARD_TOP_TILES] = {"Rank", "Name", "Score", "Time"};
-
 
 int main(void) {
 
@@ -22,13 +17,17 @@ int main(void) {
 
     Font customFont = LoadFontEx("C:/Windows/Fonts/segoeui.ttf", 32, 0, 250);
 
-    int box_width = 1300, box_height = 100, gap = 15;
-    int startY = 230;
+    int box_width = 1300, box_height = 100, gap = 12;
+    int startX = GetScreenWidth()/2, startY = 275;
 
     while (!WindowShouldClose()) {
         BeginDrawing();
             ClearBackground(RAYWHITE);
-            center_text("LEADERBOARD", startY - 130, 100, BLACK);
+            center_text("LEADERBOARD", startY - 220, 100, BLACK);
+            DrawText("Rank", startX - 600, startY - 60, 40, BLACK);
+            DrawText("Name", startX - 200, startY - 60, 40, BLACK);
+            DrawText("Level", startX + 220, startY - 60, 40, BLACK);
+            DrawText("Score", startX + 450, startY - 60, 40, BLACK);
 
             for (int i = 0; i < 5; i++){
                 Rectangle box = {(GetScreenWidth() - box_width)/2, startY + i * (box_height + gap), box_width, box_height};
